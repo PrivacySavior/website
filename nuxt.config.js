@@ -36,7 +36,6 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxt/postcss8',
-    '@nuxtjs/device'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
