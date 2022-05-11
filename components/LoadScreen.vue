@@ -1,61 +1,78 @@
 <template>
-    <div class="fixed top-0 w-full h-full z-50 bg-secondary flex justify-center items-center">
-        <div class="flex justify-center items-center flex-col">
+    <div class="fixed top-0 w-full h-full z-50 bg-secondary flex justify-center items-center transition-all" ref="loader">
+        <div class="absolute w-full h-full top-0 left-0 flex justify-center items-center flex-col">
             <img src="~/assets/images/logo_transparent.png" class="w-44"/>
+        </div>
+        <div class="absolute w-full h-full top-0 left-0 flex justify-center items-center flex-col">
             <svg
                 class="progress-ring"
-                width="300"
-                height="300">
+                width="144"
+                height="144">
                 <circle
                     class="progress-ring__circle"
-                    stroke="yellow"
+                    stroke="#d1a00d"
                     stroke-width="4"
                     fill="transparent"
                     r="70"
-                    cx="150"
-                    cy="150"/>
+                    cx="72"
+                    cy="72"/>
             </svg>
             
-            <input
-                value="50"
-                type="number"
-                step="5"
-                min="0"
-                max="100"
-                placeholder="progress"
-                class="absolute top-0"
-            />
         </div>
     </div>
 </template>
 
 <script>
 
+import { gsap } from "gsap"
+
 export default {
     name: "LoadingScreen",
+    props: {
+        percentage: Number
+    },
+    data(){
+        return {
+            circle: null,
+            radius: null,
+            circumference: null,
+        }
+    },
+    methods: {
+
+        setProgress(percent) {
+            const offset = this.circumference - percent / 100 * this.circumference;
+            this.circle.style.strokeDashoffset = offset;
+        },
+        fade(){
+            gsap.to(this.$refs.loader,{
+                autoAlpha: 0,
+                duration: 0.7,
+                ease: "power.in",
+                onComplete: ()=>{
+                    this.$emit("final")
+                }
+            })
+        }
+
+    },
     mounted(){
 
-        var circle = document.querySelector('circle');
-        var radius = circle.r.baseVal.value;
-        var circumference = radius * 2 * Math.PI;
+        this.circle = document.querySelector('circle');
+        this.radius = this.circle.r.baseVal.value;
+        this.circumference = this.radius * 2 * Math.PI;
 
-        circle.style.strokeDasharray = `${circumference} ${circumference}`;
-        circle.style.strokeDashoffset = `${circumference}`;
+        this.circle.style.strokeDasharray = `${this.circumference} ${this.circumference}`;
+        this.circle.style.strokeDashoffset = `${this.circumference}`;
 
-        function setProgress(percent) {
-        const offset = circumference - percent / 100 * circumference;
-        circle.style.strokeDashoffset = offset;
+    },
+    watch: {
+        percentage(percent){
+            if (percent == 100) this.$emit("loaded")
+            if (percent < 101 && percent > -1) {
+                this.setProgress(percent);
+            } 
         }
-        const input = document.querySelector('input');
-        setProgress(input.value);
-
-        input.addEventListener('change', function(e) {
-            if (input.value < 101 && input.value > -1) {
-                setProgress(input.value);
-            }  
-        })
-
-
     }
 }
 </script>
@@ -68,9 +85,6 @@ export default {
   transform-origin: 50% 50%;
 }
 
-.progress-ring{
-  position: absolute;
-  top: 31%;
-}
+
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-secondary h-screen w-screen">
-    <LoadScreen/>
-    <Navbar/>
+    <LoadScreen v-if="!finished_loading" :percentage="percentage" @loaded="loaded" @final="final" ref="load"/>
+    <Navbar ref="nav"/>
   </div>
 </template>
 
@@ -14,8 +14,37 @@ export default {
       title: "PrivacySavior"
     }
   },
+  data(){
+    return {
+      percentage: 0,
+      finished_loading: false
+    }
+  },
   components:{
     Navbar,
+  },
+  methods: {
+
+    simulate_loading() {
+      if (this.percentage != 100){
+        this.percentage+=5
+        console.log(this.percentage)
+        setTimeout(this.simulate_loading, 100)
+      }
+    },
+
+    loaded(){
+      this.$refs.load.fade()
+    },
+
+    final(){
+      this.finished_loading = true
+      this.$refs.nav.load()
+    }
+
+  },
+  mounted(){
+    this.simulate_loading()
   }
 }
 </script>

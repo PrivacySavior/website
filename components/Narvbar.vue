@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute top-0 w-screen z-20">
+    <div class="initial absolute w-screen z-20" ref="menu">
         <div class="flex justify-around items-center">
             <NuxtLink class="pl-5 pr-5 font-athene leading-normal text-1xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" to="/">ABOUT</NuxtLink>
             <NuxtLink class="pl-5 pr-5 font-athene leading-normal text-1xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" to="/">PRODUCTS</NuxtLink>
@@ -15,8 +15,24 @@
 </template>
 
 <script>
+import { gsap } from "gsap"
 
 export default {
     name: "Navbar",
+    methods: {
+        load(){
+            gsap.to(this.$refs.menu,{
+                y:this.$refs.menu.offsetHeight,
+                duration: 0.5,
+                ease: "power1.out"
+            })
+        }
+    }
 }
 </script>
+
+<style scoped>
+.initial{
+    top: -10%
+}
+</style>

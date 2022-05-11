@@ -24,6 +24,7 @@ module.exports = {
           // "light-gray": "#272a31",
           "accent1": "#fdf5a6",
           "accent2": "#a76b09",
+          "accent3": "#d1a00d"
         }
       },
     },
