@@ -1,5 +1,6 @@
 <template>
-  <div class="h-screen bg-light-gray">
+  <div class="bg-secondary h-screen w-screen">
+    <LoadScreen/>
     <Navbar/>
   </div>
 </template>
@@ -8,6 +9,11 @@
 import Navbar from "../components/Narvbar.vue"
 export default {
   name: 'IndexPage',
+  head(){
+    return{
+      title: "PrivacySavior"
+    }
+  },
   components:{
     Navbar,
   }

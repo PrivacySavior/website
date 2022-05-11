@@ -12,15 +12,18 @@ module.exports = {
           'antic': ['Antic Didone', 'serif'],
           'italiana': ['Italiana', 'serif'],
           'open-sans': ['Open Sans', 'sans-serif'],
-          'beau-rivage': ['Beau Rivage', 'cursive']
+          'beau-rivage': ['Beau Rivage', 'cursive'],
+          'athene': ['Athene']
         },
         colors: {
-          "blackest": "#0b0b0d",
-          "blacker": "#181619",
-          "jet-black": "#191919",
-          "light-gray": "#272a31",
-          "dark-gold": "#a76b09",
-          "light-gold": "#fdf5a6",
+          "primary": "#241C1E",
+          "secondary": "#191919",
+          // "blackest": "#0b0b0d",
+          // "blacker": "#181619",
+          // "jet-black": "#191919",
+          // "light-gray": "#272a31",
+          "accent1": "#fdf5a6",
+          "accent2": "#a76b09",
         }
       },
     },
