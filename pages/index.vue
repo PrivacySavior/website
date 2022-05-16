@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-secondary h-screen w-screen">
+  <div class="bg-secondary h-screen w-screen overflow-x-hidden">
+    <Fontloader/>
     <LoadScreen
       v-if="!finished_loading"
       :percentage="percentage"
@@ -26,16 +27,16 @@
               }
             "
             :size="60"
-            :text="'the Guardian of your Privacy.'"
+            :text="'PrivacySavior'"
             :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
-            :font="'athene'"
+            :font="'montserrat'"
             ref="first_text"
           />
           <BottomAppear
             :size="50"
             :text="'the Guardian of your Privacy.'"
             :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
-            :font="'fenix'"
+            :font="'montserrat'"
             ref="second_text"
           />
           <div class="flex justify-center relative top-10">

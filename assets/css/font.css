@@ -13,3 +13,8 @@
     font-family: Fenix;
     src: url(../font/Fenix/Fenix-Regular.ttf);
 }
+
+@font-face {
+    font-family: Aileron;
+    src: url(../font/Ailerons/Ailerons-Regular.otf);
+}

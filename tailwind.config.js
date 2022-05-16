@@ -15,7 +15,9 @@ module.exports = {
         'beau-rivage': ['Beau Rivage', 'cursive'],
         'athene': ['Athene'],
         'voga': ['Voga'],
-        'fenix': ['Fenix']
+        'fenix': ['Fenix'],
+        'aileron': ['Aileron'],
+        'montserrat': ['Montserrat', 'sans-serif']
       },
       colors: {
         "primary": "#241C1E",
