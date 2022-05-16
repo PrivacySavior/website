@@ -138,7 +138,12 @@ export default {
     },
     mounted(){
         window.addEventListener("resize", ()=>{
-            if (window.outerWidth > 800 && this.clicked){
+
+            if (window.innerWidth > 800 && this.clicked){
+
+                
+                this.clicked = !this.clicked
+
                 let top = gsap.timeline()
                 let middle = gsap.timeline()
                 let bottom = gsap.timeline()
