@@ -1,67 +1,99 @@
 <template>
   <div class="bg-secondary h-screen w-screen">
-    <LoadScreen v-if="!finished_loading" :percentage="percentage" @loaded="loaded" @final="final" ref="load"/>
-    <Navbar ref="nav" @loaded="()=>{this.$refs.first_text.appear()}"/>
-    <section ref="Main">
-      <div class="relative top-64 flex justify-around  items-center">
+    <LoadScreen
+      v-if="!finished_loading"
+      :percentage="percentage"
+      @loaded="loaded"
+      @final="final"
+      ref="load"
+    />
+    <Navbar
+      ref="nav"
+      @loaded="
+        () => {
+          this.$refs.first_text.appear();
+        }
+      "
+    />
+    <section class="bg-secondary h-screen" ref="Main">
+      <div class="relative top-64 flex justify-around items-center">
         <div>
-          <LeftAppear class="" @loaded="()=>{this.$refs.second_text.appear()}" :size="60" :text="'PrivacySavior'" :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'" ref="first_text"/>
-          <BottomAppear :size="50" :text="'the Guardian of your Privacy.'" :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'" ref="second_text"/>
+          <LeftAppear
+            class=""
+            @loaded="
+              () => {
+                this.$refs.second_text.appear();
+              }
+            "
+            :size="60"
+            :text="'the Guardian of your Privacy.'"
+            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
+            :font="'athene'"
+            ref="first_text"
+          />
+          <BottomAppear
+            :size="50"
+            :text="'the Guardian of your Privacy.'"
+            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
+            :font="'fenix'"
+            ref="second_text"
+          />
           <div class="flex justify-center relative top-10">
-            <Button :tailwind="'bg-gradient-to-br from-accent2 to-accent1'" :text="'Learn More'" :size="25"/>
+            <Button
+              :tailwind="'bg-gradient-to-br from-accent2 to-accent1'"
+              :text="'Learn More'"
+              :size="25"
+            />
           </div>
         </div>
         <div>
-          <img class="w-80" src="~/assets/images/3dbox.png"/>
+          <img class="w-80" src="~/assets/images/3dbox.png" />
         </div>
       </div>
-      <ArrowDown class="relative top-96"/>
+      <ArrowDown class="relative top-96" />
     </section>
-    <section ref="About" class="h-screen">
-    </section>
+    <section ref="About" class="h-screen bg-primary">hehehehe</section>
   </div>
 </template>
 
 <script>
-import Navbar from "../components/Narvbar.vue"
+import Navbar from "../components/Narvbar.vue";
 export default {
-  name: 'IndexPage',
-  head(){
-    return{
-      title: "PrivacySavior"
-    }
+  name: "IndexPage",
+  head() {
+    return {
+      title: "PrivacySavior",
+    };
   },
-  data(){
+  data() {
     return {
       percentage: 0,
-      finished_loading: false
-    }
+      finished_loading: false,
+    };
   },
-  components:{
+  components: {
     Navbar,
   },
   methods: {
-
     simulate_loading() {
-      if (this.percentage != 100){
-        this.percentage+=5
-        console.log(this.percentage)
-        setTimeout(this.simulate_loading, 100)
+      if (this.percentage != 100) {
+        this.percentage += 5;
+        console.log(this.percentage);
+        setTimeout(this.simulate_loading, 100);
       }
     },
 
-    loaded(){
-      this.$refs.load.fade()
+    loaded() {
+      this.$refs.load.fade();
     },
 
-    final(){
-      this.finished_loading = true
-      this.$refs.nav.load()
+    final() {
+      this.finished_loading = true;
+      this.$refs.nav.load();
     },
-
   },
-  mounted(){
-    this.simulate_loading()
-  }
-}
+  mounted() {
+    this.simulate_loading();
+  },
+};
 </script>

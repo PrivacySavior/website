@@ -2,3 +2,14 @@
     font-family: Athene;
     src: url(../font/AtheneFF/Athene.otf);
 }
+
+@font-face {
+    font-family: Voga;
+    src: url(../font/Voga/Voga-Medium.otf);
+}
+
+
+@font-face {
+    font-family: Fenix;
+    src: url(../font/Fenix/Fenix-Regular.ttf);
+}
