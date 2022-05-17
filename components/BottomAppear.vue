@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-y-hidden">    
+    <div class="overflow-y-hidden" ref="appear">    
         <div :class="`${tailwind} initial`" :style="{ fontFamily: font, fontSize: `${size}px` }" ref="text">
             {{text}}
         </div>
@@ -31,6 +31,11 @@ export default{
             default: "",
             type: String,
             required: false
+        },
+        onload: {
+            default: false,
+            type: Boolean,
+            required: false
         }
     },
     methods: {
@@ -41,6 +46,25 @@ export default{
                 ease: "power1.out",
                 onComplete: ()=>{this.$emit("loaded")}
             })
+        },
+        isInViewport() {
+            const rect = this.$refs.appear.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+        },
+        scrollAppear() {
+            if (this.isInViewport()){
+                this.appear()
+                document.removeEventListener("scroll", this.scrollAppear)
+            }
+        }
+    },
+    mounted(){
+        if (this.onload){
+            document.addEventListener("scroll",this.scrollAppear)
+            this.scrollAppear()
         }
     }
 }

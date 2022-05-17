@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-secondary h-screen w-screen overflow-x-hidden">
+  <div class="bg- w-full overflow-x-hidden">
     <Fontloader/>
     <LoadScreen
       v-if="!finished_loading"
@@ -53,7 +53,18 @@
       </div>
       <ArrowDown class="relative top-96" />
     </section>
-    <section ref="About" class="h-screen bg-primary">hehehehe</section>
+    <section ref="About" class="h-screen bg-primary">
+
+      <div>
+        <BottomAppear 
+          :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
+          :text="'What is PrivacySavior?'" 
+          :size="50"
+          :onload="true"
+        />
+      </div>
+
+    </section>
   </div>
 </template>
 

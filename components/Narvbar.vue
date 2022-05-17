@@ -1,6 +1,6 @@
 <template>
-    <div class="initial absolute w-screen z-20" ref="menu">
-        <div class="mobile-menu" ref="navmenu">
+    <div class="initial absolute w-full z-20" ref="menu">
+        <div class="menu bg-primary" ref="navmenu">
             <NuxtLink class="pl-5 pr-5 font-aileron leading-normal text-2xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="about">ABOUT</NuxtLink>
             <NuxtLink class="pl-5 pr-5 font-aileron leading-normal text-2xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="products">PRODUCTS</NuxtLink>
             <div class="flex justify-center items-center">
@@ -15,8 +15,8 @@
                 <div class="w-10 h-1 rounded-full bg-gradient-to-br from-accent2 to-accent1" ref="bunbottom"/>
             </div>
         </div>
-        <div class="w-screen h-1 bg-gradient-to-br from-accent2 to-accent1"></div>
-        <div class="w-screen h-0 bg-primary flex justify-center flex-col items-center overflow-y-hidden" ref="selection">
+        <div class="w-full h-1 bg-gradient-to-br from-accent2 to-accent1"></div>
+        <div class="w-full h-0 bg-primary flex justify-center flex-col items-center overflow-y-hidden" ref="selection">
             <li @click="hamburger" class="list-none mb-5"><NuxtLink class="text-2xl font-aileron leading-normal text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="about">ABOUT</NuxtLink></li>
             <li @click="hamburger" class="list-none mb-5"><NuxtLink class="text-2xl font-aileron leading-normal text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="products">PRODUCTS</NuxtLink></li>
             <li @click="hamburger" class="list-none mb-5"><NuxtLink class="text-2xl font-aileron leading-normal text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="demonstration">DEMONSTRATION</NuxtLink></li>
@@ -42,7 +42,7 @@ export default {
     methods: {
         load(){
             gsap.to(this.$refs.menu,{
-                y:this.$refs.menu.offsetHeight,
+                y: 0,
                 duration: 0.5,
                 ease: "power1.out",
                 onComplete: ()=>{this.$emit("loaded")}
@@ -137,6 +137,9 @@ export default {
         }
     },
     mounted(){
+        gsap.to(this.$refs.menu,{
+            y: -2*this.$refs.menu.offsetHeight,
+        })
         window.addEventListener("resize", ()=>{
 
             if (window.innerWidth > 800 && this.clicked){
@@ -188,11 +191,8 @@ export default {
 </script>
 
 <style scoped>
-.initial{
-    top: -10%
-}
 
-.mobile-menu{
+.menu{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -205,7 +205,7 @@ export default {
 
 @media (max-width:900px){
 
-    .mobile-menu > a{
+    .menu > a{
         display: none;
         justify-content: space-between;
     }
