@@ -39,7 +39,7 @@
             :font="'montserrat'"
             ref="second_text"
           />
-          <div class="flex justify-center relative top-10">
+          <div class="flex justify-center relative top-32">
             <Button
               :tailwind="'bg-gradient-to-br from-accent2 to-accent1'"
               :text="'Learn More'"
@@ -51,9 +51,8 @@
           <img class="w-80" src="~/assets/images/3dbox.png" />
         </div>
       </div>
-      <ArrowDown to="#about" class="relative top-96" />
+      <ArrowDown to="#about" class="relative top-[50%]" />
     </section>
-    <div id="about"/>
     <section ref="About" id="about" class="min-h-[100vh] w-full h-full bg-primary flex items-center justify-evenly flex-wrap">
         
       <div class="basis-0 grow p-4">
@@ -88,6 +87,47 @@
       </div>
 
     </section>
+    <section ref="Products" id="products" class="min-h-[75vh] w-full h-full bg-primary flex items-center justify-evenly flex-wrap">
+        
+      <div class="basis-0 grow p-4">
+        <div>
+          <BottomAppear 
+            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
+            :text="'PRODUCTS'" 
+            :size="75"
+            :onload="true"
+            :font="'aileron'"
+          />
+        </div>
+        
+        <p class="text-white font-montserrat text-5xl">
+          Coming soon.
+        </p>
+        
+      </div>
+
+    </section>
+    <section ref="Faq" id="faq" class="min-h-[75vh] w-full h-full bg-primary flex items-center justify-evenly flex-wrap">
+        
+      <div class="basis-0 grow p-4">
+        <div>
+          <BottomAppear 
+            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
+            :text="'FAQS'" 
+            :size="75"
+            :onload="true"
+            :font="'aileron'"
+          />
+        </div>
+        
+        <p class="text-white font-montserrat text-5xl">
+          Coming soon.
+        </p>
+        
+      </div>
+
+    </section>
+    
     <Footer/>
   </div>
 </template>

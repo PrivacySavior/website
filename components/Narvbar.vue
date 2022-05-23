@@ -1,5 +1,5 @@
 <template>
-    <div class="initial absolute w-full z-20" ref="menu">
+    <div class="initial absolute w-full z-30" ref="menu">
         <div class="menu bg-secondary" ref="navmenu">
             <NuxtLink class="pl-5 pr-5 font-aileron leading-normal text-2xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="{ path: '/',hash:about}">ABOUT</NuxtLink>
             <NuxtLink class="pl-5 pr-5 font-aileron leading-normal text-2xl text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1 relative right-6" :to="{ path: '/',hash:products}">PRODUCTS</NuxtLink>
