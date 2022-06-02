@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { gsap } from "gsap"
+import { gsap } from "gsap" 
 
 export default {
     name: "Navbar",
@@ -137,8 +137,13 @@ export default {
         }
     },
     mounted(){
-        gsap.to(this.$refs.menu,{
-            y: -2*this.$refs.menu.offsetHeight,
+        // gsap.to(this.$refs.menu,{
+        //     y: -2*this.$refs.menu.offsetHeight,
+        // })
+        gsap.set(this.$refs.menu, {
+            css: {
+                translateY: "-100%"
+            }
         })
         window.addEventListener("resize", ()=>{
 

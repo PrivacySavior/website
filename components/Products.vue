@@ -3,7 +3,7 @@
     ref="Products"
     id="products"
     class="
-      min-h-[75vh]
+      min-h-[100vh]
       w-full
       h-full
       bg-primary
