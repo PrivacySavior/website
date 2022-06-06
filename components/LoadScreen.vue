@@ -45,7 +45,7 @@ export default {
             this.circle.style.strokeDashoffset = offset;
         },
         fade(){
-            gsap.to(this.$refs.loader,{
+            this.$gsap.to(this.$refs.loader,{
                 autoAlpha: 0,
                 duration: 0.7,
                 ease: "power.in",

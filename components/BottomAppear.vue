@@ -40,7 +40,7 @@ export default{
     },
     methods: {
         appear(){
-            gsap.to(this.$refs.text, {
+            this.$gsap.to(this.$refs.text, {
                 y: 0,
                 duration: 0.8,
                 ease: "power1.out",

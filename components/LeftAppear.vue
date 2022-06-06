@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { gsap } from "gsap"
 
 export default{
     name: "LeftAppear",
@@ -40,7 +39,7 @@ export default{
     },
     methods: {
         appear(){
-            gsap.to(this.$refs.text, {
+            this.$gsap.to(this.$refs.text, {
                 x: 0,
                 duration: 0.8,
                 ease: "power1.out",

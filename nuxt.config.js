@@ -65,7 +65,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxt/postcss8',
+    'nuxt-gsap-module'
   ],
+  gsap: {
+    extraPlugins: {
+      scrollTo: true,
+      scrollTrigger: true
+    },
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

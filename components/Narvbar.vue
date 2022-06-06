@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import { gsap } from "gsap" 
 
 export default {
     name: "Navbar",
@@ -41,7 +40,7 @@ export default {
     },
     methods: {
         load(){
-            gsap.to(this.$refs.menu,{
+            this.$gsap.to(this.$refs.menu,{
                 y: 0,
                 duration: 0.5,
                 ease: "power1.out",
@@ -57,9 +56,9 @@ export default {
             document.body.scroll = "no"; // ie only
         },
         hamburger(){
-            let top = gsap.timeline()
-            let middle = gsap.timeline()
-            let bottom = gsap.timeline()
+            let top = this.$gsap.timeline()
+            let middle = this.$gsap.timeline()
+            let bottom = this.$gsap.timeline()
             if (!this.clicked) {
                 top.to(this.$refs.buntop,{
                     y: 12,
@@ -88,7 +87,7 @@ export default {
                     ease: "power1.in"
                 })
                 this.disable_scroll()
-                gsap.to(this.$refs.selection,{
+                this.$gsap.to(this.$refs.selection,{
                     height: window.innerHeight - this.$refs.navmenu.offsetHeight,
                     duration: 0.5,
                     ease: "bounce.out"
@@ -120,7 +119,7 @@ export default {
                     duration: 0.1,
                     ease: "power1.in"
                 })
-                gsap.to(this.$refs.selection,{
+                this.$gsap.to(this.$refs.selection,{
                     height: 0,
                     duration: 0.5,
                     ease: "bounce.in",
@@ -137,10 +136,10 @@ export default {
         }
     },
     mounted(){
-        // gsap.to(this.$refs.menu,{
+        // this.$gsap.to(this.$refs.menu,{
         //     y: -2*this.$refs.menu.offsetHeight,
         // })
-        gsap.set(this.$refs.menu, {
+        this.$gsap.set(this.$refs.menu, {
             css: {
                 translateY: "-100%"
             }
@@ -152,9 +151,9 @@ export default {
                 
                 this.clicked = !this.clicked
 
-                let top = gsap.timeline()
-                let middle = gsap.timeline()
-                let bottom = gsap.timeline()
+                let top = this.$gsap.timeline()
+                let middle = this.$gsap.timeline()
+                let bottom = this.$gsap.timeline()
                 top.to(this.$refs.buntop,{
                     rotate: 0,
                     duration: 0.1,
@@ -181,7 +180,7 @@ export default {
                     duration: 0.1,
                     ease: "power1.in"
                 })
-                gsap.to(this.$refs.selection,{
+                this.$gsap.to(this.$refs.selection,{
                     height: 0,
                     duration: 0.5,
                     ease: "bounce.in",
