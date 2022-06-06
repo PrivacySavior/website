@@ -54,7 +54,7 @@
       <ArrowDown to="#about" class="relative top-[50%]" />
     </section>
     <About />
-    <Slogan text="Privacy, Customizability, Everywhere"/>
+    <Slogan text="Privacy. Customizability. Everywhere."/>
     <Products />
     <Slogan text="The Guardian of your Privacy." direction="right"/>
     <Faq />
