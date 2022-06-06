@@ -12,13 +12,25 @@ export default {
             required: false,
             default: "Slogan",
             type: String
+        },
+        direction: {
+            required: false,
+            default: "left",
+            type: String
         }
     },
     mounted(){
-        this.$gsap.to(this.$refs.slidein, {
-            duration: 0,
-            x: - this.$refs.slidein.offsetWidth
-        })
+        if (this.direction.toLowerCase()=="left"){
+            this.$gsap.to(this.$refs.slidein, {
+                duration: 0,
+                x: - this.$refs.slidein.offsetWidth
+            })
+        }else {
+            this.$gsap.to(this.$refs.slidein, {
+                duration: 0,
+                x:  this.$refs.slidein.offsetWidth
+            })
+        }
         const slide = this.$gsap.timeline({
             scrollTrigger: {
                 trigger: this.$refs.trigger,

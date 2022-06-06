@@ -54,10 +54,10 @@
       <ArrowDown to="#about" class="relative top-[50%]" />
     </section>
     <About />
-    <Slogan text="The Guardian of your Privacy."/>
+    <Slogan text="Privacy, Customizability, Everywhere"/>
     <Products />
+    <Slogan text="The Guardian of your Privacy." direction="right"/>
     <Faq />
-
     <Footer />
   </div>
 </template>
