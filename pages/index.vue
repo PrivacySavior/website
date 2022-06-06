@@ -54,6 +54,7 @@
       <ArrowDown to="#about" class="relative top-[50%]" />
     </section>
     <About />
+    <Slogan text="The Guardian of your Privacy."/>
     <Products />
     <Faq />
 

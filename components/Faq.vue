@@ -3,7 +3,7 @@
     ref="Faq"
     id="faq"
     class="
-      min-h-[100vh]
+      p-20
       w-full
       h-full
       bg-primary
