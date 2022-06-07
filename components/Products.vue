@@ -46,7 +46,7 @@ export default {
   name: "Products",
   mounted(){
     this.$gsap.to(this.$refs.description,{
-      x: - this.$refs.description.offsetWidth/4,
+      x: this.$refs.description.offsetWidth/4,
       autoAlpha: 0,
       duration: 0
     })
@@ -59,7 +59,7 @@ export default {
     })
 
     this.$gsap.to(this.$refs.media,{
-      x: this.$refs.description.offsetWidth/4,
+      x: - this.$refs.description.offsetWidth/4,
       autoAlpha: 0,
       duration: 0
     })

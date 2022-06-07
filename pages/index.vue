@@ -1,5 +1,5 @@
 <template>
-  <div class="bg- w-full overflow-x-hidden scroll-smooth">
+  <div class="bg- w-full overflow-x-hidden scroll-smooth" ref="content">
     <Fontloader />
     <LoadScreen
       v-if="!finished_loading"
@@ -61,6 +61,7 @@ export default {
   },
   mounted() {
     this.simulate_loading();
+    // this.$ScrollSmoother.smoothScroll(this.$refs.content)
   },
   watch: {
     landing(v){

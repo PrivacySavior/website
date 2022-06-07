@@ -70,8 +70,11 @@ export default {
   gsap: {
     extraPlugins: {
       scrollTo: true,
-      scrollTrigger: true
+      scrollTrigger: true,
     },
+    // clubPlugins: {
+    //   scrollSmoother: true
+    // }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
