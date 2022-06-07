@@ -1,6 +1,6 @@
 <template>
     <div class="overflow-y-hidden" ref="appear">    
-        <div :class="`${tailwind} initial`" :style="{ fontFamily: font, fontSize: `${size}px` }" ref="text">
+        <div :class="`${tailwind} initial`" :style="{ fontFamily: font, fontSize: `${size}` }" ref="text">
             {{text}}
         </div>
     </div>
@@ -17,8 +17,8 @@ export default{
             required: false
         },
         size: {
-            default: 100,
-            type: Number,
+            default: "5rem",
+            type: String,
             required: false
         },
         font: {

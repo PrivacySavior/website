@@ -18,7 +18,7 @@
         <BottomAppear
           :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
           :text="'FAQS'"
-          :size="75"
+          size="5rem"
           :onload="true"
           :font="'aileron'"
         />

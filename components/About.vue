@@ -13,12 +13,12 @@
       flex-wrap
     "
   >
-    <div class="basis-0 grow p-4">
+    <div class="basis-0 grow p-4" ref="description">
       <div>
         <BottomAppear
           :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
           :text="'ABOUT'"
-          :size="75"
+          size="5rem"
           :onload="true"
           :font="'aileron'"
         />
@@ -44,8 +44,8 @@
       </p>
     </div>
 
-    <div class="w-1/2 min-w-[30rem] p-4">
-      <video loop muted autoplay controls>
+    <div class="w-1/2 min-w-[30rem] p-4" ref="media">
+      <video loop muted autoplay>
         <source src="~/assets/video/privacy.mp4" type="video/mp4" />
       </video>
     </div>
@@ -55,5 +55,32 @@
 <script>
 export default {
   name: "About",
+  mounted(){
+    this.$gsap.to(this.$refs.description,{
+      x: - this.$refs.description.offsetWidth/4,
+      autoAlpha: 0,
+      duration: 0
+    })
+
+    this.$gsap.to(this.$refs.description,{
+      scrollTrigger: this.$refs.description,
+      x: 0,
+      autoAlpha: 1,
+      duration: 2
+    })
+
+    this.$gsap.to(this.$refs.media,{
+      x: this.$refs.description.offsetWidth/4,
+      autoAlpha: 0,
+      duration: 0
+    })
+
+    this.$gsap.to(this.$refs.media,{
+      scrollTrigger: this.$refs.media,
+      x: 0,
+      autoAlpha: 1,
+      duration: 2
+    })
+  }
 };
 </script>

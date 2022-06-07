@@ -10,53 +10,13 @@
     />
     <Navbar
       ref="nav"
-      @loaded="
-        () => {
-          this.$refs.first_text.appear();
-        }
-      "
+      @loaded="()=>{this.landing = true}"
     />
-    <section class="bg-secondary h-screen" ref="Main">
-      <div class="relative top-64 flex justify-around items-center">
-        <div>
-          <LeftAppear
-            class=""
-            @loaded="
-              () => {
-                this.$refs.second_text.appear();
-              }
-            "
-            :size="60"
-            :text="'PrivacySavior'"
-            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
-            :font="'montserrat'"
-            ref="first_text"
-          />
-          <BottomAppear
-            :size="50"
-            :text="'the Guardian of your Privacy.'"
-            :tailwind="'text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1'"
-            :font="'montserrat'"
-            ref="second_text"
-          />
-          <div class="flex justify-center relative top-32">
-            <Button
-              :tailwind="'bg-gradient-to-br from-accent2 to-accent1'"
-              :text="'Learn More'"
-              :size="25"
-            />
-          </div>
-        </div>
-        <div>
-          <img class="w-80" src="~/assets/images/3dbox.png" />
-        </div>
-      </div>
-      <ArrowDown to="#about" class="relative top-[50%]" />
-    </section>
+    <Landing ref="land"/>
     <About />
-    <Slogan text="Privacy. Customizability. Everywhere."/>
+    <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
     <Products />
-    <Slogan text="The Guardian of your Privacy." direction="right"/>
+    <Slogan text="The Guardian of your Privacy." direction="right" size="6vmin"/>
     <Faq />
     <Footer />
   </div>
@@ -75,6 +35,7 @@ export default {
     return {
       percentage: 0,
       finished_loading: false,
+      landing: false
     };
   },
   components: {
@@ -101,5 +62,10 @@ export default {
   mounted() {
     this.simulate_loading();
   },
+  watch: {
+    landing(v){
+      if (v) this.$refs.land.appear()
+    }
+  }
 };
 </script>
