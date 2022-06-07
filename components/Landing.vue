@@ -1,6 +1,6 @@
 <template>
     <section class="bg-secondary h-screen w-screen" ref="Main">
-      <video src="~/assets/video/product.mp4" muted autoplay loop class="absolute h-screen w-screen brightness-75 object-cover"></video>
+      <video @canplay="video_loaded" src="~/assets/video/product.mp4" muted autoplay loop class="absolute h-screen w-screen brightness-75 object-cover"></video>
       <div class="relative top-64 flex justify-around items-center">
         <div>
           <LeftAppear
@@ -35,6 +35,10 @@ export default {
     methods: {
         appear(){
             this.$refs.first_text.appear()
+        },
+        video_loaded(){
+          console.log("Video ready")
+          this.$emit("loaded")
         }
     }
 }

@@ -4,7 +4,7 @@
     <LoadScreen
       v-if="!finished_loading"
       :percentage="percentage"
-      @loaded="loaded"
+      @100percent="loaded"
       @final="final"
       ref="load"
     />
@@ -12,7 +12,7 @@
       ref="nav"
       @loaded="()=>{this.landing = true}"
     />
-    <Landing ref="land"/>
+    <Landing ref="land" @loaded="task_done"/>
     <About />
     <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
     <Products />
@@ -35,37 +35,35 @@ export default {
     return {
       percentage: 0,
       finished_loading: false,
-      landing: false
+      landing: false,
+      total_tasks: 1,
+      finished_tasks: 0
     };
   },
   components: {
     Navbar,
   },
   methods: {
-    simulate_loading() {
-      if (this.percentage != 100) {
-        this.percentage += 5;
-        console.log(this.percentage);
-        setTimeout(this.simulate_loading, 100);
-      }
-    },
-
     loaded() {
       this.$refs.load.fade();
     },
-
     final() {
       this.finished_loading = true;
       this.$refs.nav.load();
     },
+    task_done(){
+      this.finished_tasks++
+    }
   },
   mounted() {
-    this.simulate_loading();
     // this.$ScrollSmoother.smoothScroll(this.$refs.content)
   },
   watch: {
     landing(v){
       if (v) this.$refs.land.appear()
+    },
+    finished_tasks(){
+      this.percentage = this.finished_tasks/this.total_tasks * 100
     }
   }
 };

@@ -68,7 +68,7 @@ export default {
     },
     watch: {
         percentage(percent){
-            if (percent == 100) this.$emit("loaded")
+            if (percent == 100) this.$emit("100percent")
             if (percent < 101 && percent > -1) {
                 this.setProgress(percent);
             } 
