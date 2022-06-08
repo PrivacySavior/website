@@ -1,6 +1,6 @@
 <template>
     <section class="bg-secondary h-screen w-screen" ref="Main">
-      <video @canplay="video_loaded" src="https://res.cloudinary.com/privacysaviorllc/video/upload/v1654616859/videos/product_xn9kda.mp4" muted autoplay loop class="absolute h-screen w-screen brightness-75 object-cover"></video>
+      <video @canplay="video_loaded" src="https://res.cloudinary.com/privacysaviorllc/video/upload/v1654658856/videos/0001-0100_ar1jwi.mkv" muted autoplay loop class="absolute h-screen w-screen brightness-75 object-cover"></video>
       <div class="relative top-64 flex justify-around items-center">
         <div>
           <LeftAppear

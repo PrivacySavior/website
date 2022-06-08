@@ -57,11 +57,7 @@ export default {
     }
   },
   mounted() {
-    gsap.registerPlugin(ScrollSmoother);
-    ScrollSmoother.create({
-      content: this.$refs.content
-    })
-    console.log(this.$ScrollSmoother)
+
   },
   watch: {
     landing(v){
