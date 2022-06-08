@@ -15,7 +15,7 @@
   >
 
     <div class="w-1/2 min-w-[30rem] p-4" ref="media">
-      <img src="~/assets/images/product.png"/>
+      <img src="https://res.cloudinary.com/privacysaviorllc/image/upload/v1654617604/videos/product_llknd1.png"/>
     </div>
     
     <div class="basis-0 grow p-4" ref="description">

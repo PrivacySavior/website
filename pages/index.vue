@@ -24,6 +24,7 @@
 
 <script>
 import Navbar from "../components/Narvbar.vue";
+
 export default {
   name: "IndexPage",
   head() {
@@ -56,7 +57,11 @@ export default {
     }
   },
   mounted() {
-    // this.$ScrollSmoother.smoothScroll(this.$refs.content)
+    gsap.registerPlugin(ScrollSmoother);
+    ScrollSmoother.create({
+      content: this.$refs.content
+    })
+    console.log(this.$ScrollSmoother)
   },
   watch: {
     landing(v){
