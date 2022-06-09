@@ -54,15 +54,20 @@ export default {
           return `https://res.cloudinary.com/privacysaviorllc/image/upload/v1654711303/product-split/${(index + 1).toString().padStart(4, '0')}.png`
         },
         render() {
-          console.log(this.frame)
           this.context.clearRect(0, 0, this.canvas_width, this.canvas_height);
           this.context.drawImage(this.images[this.frame], 0, 0); 
         },
         resize_canvas(){
-          this.$refs.video.height = window.outerHeight
-          this.$refs.video.width = window.outerWidth
+          console.log("Resizing")
+          this.$refs.video.height = 1080
+          this.$refs.video.width = 1920
           this.canvas_width = window.outerWidth
           this.canvas_height = window.outerHeight
+        },
+        on_resize(){
+          this.resize_canvas()
+          this.context = this.$refs.video.getContext("2d")
+          this.render()
         }
     },
     watch:{
@@ -73,11 +78,7 @@ export default {
     mounted(){
       this.resize_canvas()
 
-      window.addEventListener("resize", ()=>{
-        this.resize_canvas
-        this.context = this.$refs.video.getContext("2d")
-        this.render()
-      })
+      document.addEventListener("resize", this.on_resize)
       
       this.context = this.$refs.video.getContext("2d")
       for (let i = 0; i < this.frameCount; i++) {
