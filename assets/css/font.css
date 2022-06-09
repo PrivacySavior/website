@@ -18,3 +18,7 @@
     font-family: Aileron;
     src: url(../font/Ailerons/Ailerons-Regular.otf);
 }
+
+*{
+    scroll-behavior: smooth;
+}

@@ -45,7 +45,8 @@ export default {
             scrollTrigger: {
                 trigger: this.$refs.trigger,
                 start: "center bottom",
-                scrub: true,
+                scrub: 1,
+                // markers: true
             }
         });
         slide.to(this.$refs.slidein, {x: 0})

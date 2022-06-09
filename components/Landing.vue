@@ -88,7 +88,7 @@ export default {
           trigger: this.$refs.main,
           start: "top top",
           end: "bottom center",
-          markers: true,
+          // markers: true,
           toggleActions: "play none reverse none",
           scrub: 0.1
         },
