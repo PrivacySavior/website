@@ -1,6 +1,6 @@
 <template>
-    <section class="bg-secondary h-screen w-screen" ref="Main">
-      <canvas ref="video" class="absolute h-full w-full brightness-75 object-cover"></canvas>
+    <section class="bg-secondary h-[5000px] w-screen border-2 border-red-500 z-10" ref="main">
+      <canvas ref="video" class="fixed h-full w-full brightness-75 object-cover"></canvas>
       <div class="relative top-64 flex justify-around items-center">
         <div>
           <LeftAppear
@@ -25,7 +25,7 @@
           />
         </div>
       </div>
-      <ArrowDown to="#about" class="relative top-[60%]" />
+      <ArrowDown to="#about" class="relative top-[15%]" />
     </section>
 </template>
 
@@ -37,7 +37,9 @@ export default {
         frameCount: 70,
         images: [],
         context: null,
-        frame: 0
+        frame: 0,
+        canvas_width: 0,
+        canvas_height: 0
       }
     },
     methods: {
@@ -51,17 +53,26 @@ export default {
           return `https://res.cloudinary.com/privacysaviorllc/image/upload/v1654711303/product-split/${(index + 1).toString().padStart(4, '0')}.png`
         },
         render() {
-          this.context.clearRect(0, 0, this.$refs.video.width, this.$refs.video.height);
+          console.log(this.frame)
+          this.context.clearRect(0, 0, this.canvas_width, this.canvas_height);
           this.context.drawImage(this.images[this.frame], 0, 0); 
         },
         resize_canvas(){
           this.$refs.video.height = window.outerHeight
           this.$refs.video.width = window.outerWidth
+          this.canvas_width = window.outerWidth
+          this.canvas_height = window.outerHeight
         }
     },
     mounted(){
       this.resize_canvas()
-      window.addEventListener("resize", this.resize_canvas)
+
+      window.addEventListener("resize", ()=>{
+        this.resize_canvas
+        this.context = this.$refs.video.getContext("2d")
+        this.render()
+      })
+      
       this.video_loaded()
       this.context = this.$refs.video.getContext("2d")
       for (let i = 0; i < this.frameCount; i++) {
@@ -69,7 +80,21 @@ export default {
         img.src = this.currentFrame(i);
         this.images.push(img);
       }
+
       this.images[0].onload = this.render;
+
+      const slide = this.$gsap.timeline({
+        scrollTrigger: {
+          trigger: this.$refs.main,
+          start: "top top",
+          end: "bottom center",
+          markers: true,
+          toggleActions: "play none reverse none",
+          scrub: 0.1
+        },
+        onUpdate: this.render,
+      });
+      slide.to(this, {frame: this.frameCount - 1, snap: "frame" })
     }
 }
 </script>

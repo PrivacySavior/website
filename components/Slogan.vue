@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full p-10 text-5xl bg-primary flex justify-center items-center" ref="trigger">
+    <div class="w-full p-10 text-5xl bg-primary flex justify-center items-center z-20" ref="trigger">
         <h2 class="font-aileron text-transparent bg-clip-text bg-gradient-to-br from-accent2 to-accent1" ref="slidein" :style="{ fontFamily: font, fontSize: `${size}` }">{{text}}</h2>
     </div>
 </template>

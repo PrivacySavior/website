@@ -13,12 +13,14 @@
       @loaded="()=>{this.landing = true}"
     />
     <Landing ref="land" @loaded="task_done"/>
-    <About />
-    <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
-    <Products />
-    <Slogan text="The Guardian of your Privacy." direction="right" size="6vmin"/>
-    <Faq />
-    <Footer />
+    <div class="relative bg-secondary z-20">
+      <About/>
+      <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
+      <Products />
+      <Slogan text="The Guardian of your Privacy." direction="right" size="6vmin"/>
+      <Faq />
+      <Footer />
+    </div>
   </div>
 </template>
 
