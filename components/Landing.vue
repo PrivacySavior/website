@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-secondary h-[5000px] w-screen border-2 border-red-500 z-10" ref="main">
+    <section class="bg-secondary h-[5000px] w-screen border-2 z-10" ref="main">
       <canvas ref="video" class="fixed h-full w-full brightness-75 object-cover"></canvas>
       <div class="relative top-64 flex justify-around items-center">
         <div>
@@ -39,15 +39,16 @@ export default {
         context: null,
         frame: 0,
         canvas_width: 0,
-        canvas_height: 0
+        canvas_height: 0,
+        loaded_image: 0
       }
     },
     methods: {
         appear(){
             this.$refs.first_text.appear()
         },
-        video_loaded(){
-          this.$emit("loaded")
+        video_loaded(percentage){
+          this.$emit("percentage", percentage)
         },
         currentFrame(index){
           return `https://res.cloudinary.com/privacysaviorllc/image/upload/v1654711303/product-split/${(index + 1).toString().padStart(4, '0')}.png`
@@ -64,6 +65,11 @@ export default {
           this.canvas_height = window.outerHeight
         }
     },
+    watch:{
+      loaded_image(value){
+        this.video_loaded(value/this.frameCount)
+      }
+    },
     mounted(){
       this.resize_canvas()
 
@@ -73,15 +79,18 @@ export default {
         this.render()
       })
       
-      this.video_loaded()
       this.context = this.$refs.video.getContext("2d")
       for (let i = 0; i < this.frameCount; i++) {
         const img = new Image();
         img.src = this.currentFrame(i);
         this.images.push(img);
+        this.images[i].onload = ()=> {this.loaded_image++}
       }
 
-      this.images[0].onload = this.render;
+      this.images[0].onload = ()=> {
+        this.loaded_image++
+        this.render()
+      };
 
       const slide = this.$gsap.timeline({
         scrollTrigger: {

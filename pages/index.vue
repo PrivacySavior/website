@@ -12,7 +12,7 @@
       ref="nav"
       @loaded="()=>{this.landing = true}"
     />
-    <Landing ref="land" @loaded="task_done"/>
+    <Landing ref="land" @percentage="unload"/>
     <div class="relative bg-secondary z-20">
       <About/>
       <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
@@ -40,7 +40,6 @@ export default {
       finished_loading: false,
       landing: false,
       total_tasks: 1,
-      finished_tasks: 0
     };
   },
   components: {
@@ -54,8 +53,8 @@ export default {
       this.finished_loading = true;
       this.$refs.nav.load();
     },
-    task_done(){
-      this.finished_tasks++
+    unload(percentage){
+      if (percentage >= 1) this.final()
     }
   },
   mounted() {
@@ -64,9 +63,6 @@ export default {
   watch: {
     landing(v){
       if (v) this.$refs.land.appear()
-    },
-    finished_tasks(){
-      this.percentage = this.finished_tasks/this.total_tasks * 100
     }
   }
 };
