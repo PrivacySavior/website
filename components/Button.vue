@@ -1,5 +1,5 @@
 <template>
-    <button :style="{ fontFamily: font, fontSize: `${size}px` }" :class="`${tailwind} pl-6 pr-6 pt-2 pb-2 rounded-full`">{{text}}</button>
+    <button :style="{ fontFamily: font, fontSize: `${size}` }" :class="`hover ${tailwind} pl-6 pr-6 pt-2 pb-2 rounded-full text-black`" @click="clicked">{{text}}</button>
 </template>
 
 <script>
@@ -13,8 +13,8 @@ export default {
             required: false
         },
         size: {
-            default: 100,
-            type: Number,
+            default: "2rem",
+            type: String,
             required: false
         },
         font: {
@@ -27,7 +27,19 @@ export default {
             type: String,
             required: false
         }
+    },
+    methods:{
+        clicked(){
+            this.$emit('click')
+        }
     }
 }
 
 </script>
+
+<style scoped>
+.hover:hover{
+    transition: all ease 0.3s;
+    transform: scale(90%);
+}
+</style>

@@ -73,6 +73,7 @@ export default {
     watch:{
       loaded_image(value){
         this.video_loaded(value/this.frameCount)
+        
       }
     },
     mounted(){
