@@ -19,9 +19,4 @@
     src: url(../font/Ailerons/Ailerons-Regular.otf);
 }
 
-*{
-    scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
-    border: 0;
-}
+

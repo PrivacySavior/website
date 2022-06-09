@@ -100,7 +100,7 @@ export default {
           end: "bottom center",
           // markers: true,
           toggleActions: "play none reverse none",
-          scrub: 0.1
+          scrub: 1
         },
         onUpdate: this.render,
       });
