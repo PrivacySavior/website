@@ -49,20 +49,21 @@ export default {
     },
     methods:{
         async signup(){
-            try{
-                let email = this.$refs.input.get_value()
-                this.$refs.input.clear_value()
-                let response = await this.$axios.post("https://data.mongodb-api.com/app/emailcollection-qhing/endpoint/add_email", { 
-                    email: email
-                })
+            let email = this.$refs.input.get_value()
+            this.$refs.input.clear_value()
+            this.$axios.post("https://data.mongodb-api.com/app/emailcollection-qhing/endpoint/add_email", { 
+                email: email
+            }).then(()=>{
                 this.$refs.status.classList.remove("error")
                 this.$refs.status.classList.add("success")
                 this.error_message = "You will now receive the latest updates!"
-            }catch(err){
+            }).catch((error)=>{
                 this.$refs.status.classList.remove("success")
                 this.$refs.status.classList.add("error")
-                this.error_message = "Something went wrong."
-            }
+                this.error_message = error.response.data
+            })
+            
+          
         }
     },
     mounted(){
