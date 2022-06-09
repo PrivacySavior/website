@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-secondary h-[5000px] w-screen border-2 z-10" ref="main">
+    <section class="bg-secondary h-[4000px] w-screen border-2 z-10" ref="main">
       <canvas ref="video" class="fixed h-full w-full brightness-75 object-cover"></canvas>
       <div class="relative top-64 flex justify-around items-center">
         <div>
