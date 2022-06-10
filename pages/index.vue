@@ -12,7 +12,7 @@
       ref="nav"
       @loaded="()=>{this.landing = true}"
     />
-    <Landing ref="land" @percentage="unload"/>
+    <Landing ref="land" @percentage="update_percent"/>
     <div class="relative bg-secondary z-20">
       <About/>
       <Slogan text="Privacy. Customizability. Everywhere." size="6vmin"/>
@@ -53,8 +53,8 @@ export default {
       this.finished_loading = true;
       this.$refs.nav.load();
     },
-    unload(percentage){
-      if (percentage >= 1) this.final()
+    update_percent(value){
+      this.percentage = value * 100
     }
   },
   mounted() {

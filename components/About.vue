@@ -46,7 +46,7 @@
 
     <div class="w-1/2 min-w-[30rem] p-4" ref="media">
       <video loop muted autoplay>
-        <source src="https://res.cloudinary.com/privacysaviorllc/video/upload/v1654617664/videos/privacy_npv2ti.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/privacysaviorllc/video/upload/g_auto/q_auto:eco/v1654617664/videos/privacy_npv2ti.mp4" type="video/mp4" />
       </video>
     </div>
   </section>

@@ -2,7 +2,7 @@
     <footer id="footer">
         <div class="w-full h-1 bg-gradient-to-br from-accent2 to-accent1"></div>
         <div class="bg-secondary footer-container">
-            <div class="footer min-h-[300px] pl-12">
+            <div class="footer min-h-[300px]">
                 <div>
                     <div class="flex justify-center items-center">
                         <img src="~assets/images/logo_transparent.png" class="w-24 relative bottom-1"/>
@@ -45,10 +45,14 @@ export default {
     data(){
         return {
             error_message: "",
+            sending: false
         }
     },
     methods:{
         async signup(){
+            if (this.sending) return
+            this.sending = true
+            this.error_message = "Sending to server..."
             let email = this.$refs.input.get_value()
             this.$refs.input.clear_value()
             this.$axios.post("https://data.mongodb-api.com/app/emailcollection-qhing/endpoint/add_email", { 
@@ -57,13 +61,14 @@ export default {
                 this.$refs.status.classList.remove("error")
                 this.$refs.status.classList.add("success")
                 this.error_message = "You will now receive the latest updates!"
+                this.sending = false
             }).catch((error)=>{
                 this.$refs.status.classList.remove("success")
                 this.$refs.status.classList.add("error")
                 this.error_message = error.response.data
+                this.sending = false
             })
             
-          
         }
     },
     mounted(){
@@ -78,6 +83,7 @@ export default {
     justify-content: left;
     align-items: center;
     flex-direction: row;
+    padding-left: 3rem;
 }
 
 .footer-container{
@@ -107,6 +113,7 @@ export default {
 @media (max-width:900px) {
     .footer{
         flex-direction: column;
+        padding-left:0;
     }
     .info{
         text-align: center;

@@ -51,7 +51,7 @@ export default {
           this.$emit("percentage", percentage)
         },
         currentFrame(index){
-          return `https://res.cloudinary.com/privacysaviorllc/image/upload/v1654711303/product-split/${(index + 1).toString().padStart(4, '0')}.png`
+          return `https://res.cloudinary.com/privacysaviorllc/image/upload/g_auto/q_auto:eco/v1654711303/product-split/${(index + 1).toString().padStart(4, '0')}.png`
         },
         render() {
           this.context.clearRect(0, 0, this.canvas_width, this.canvas_height);
